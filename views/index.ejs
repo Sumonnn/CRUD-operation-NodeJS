@@ -16,21 +16,21 @@
       <form action="/create" method="post">
         <input class="form-control" type="text" placeholder="example.extension" name="filename">
       </form>
+      
       <hr>
 
-      <!--  files.forEach((file)=> { %> -->
-        <% for(let i=0 ; i<files.length ; i++){ %>
+      <% files.forEach((file)=> { %>
         <ul class="list-group mt-2">
           <li class="list-group-item d-flex justify-content-between">
             <a class="text-decoration-none" href="/">
-              <%= files[i] %>
+              <%= file %>
             </a>
-            <a class="text-decoration-none" href="/delete/<%= i %>">
+            <a class="text-decoration-none" href="/delete/<%= file %>">
               <span>❌</span>
             </a>
           </li>
         </ul>
-        <% }; %>
+        <% }); %>
     </div>
 
     <div class="right"></div>
