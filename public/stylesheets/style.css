@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+.main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.left {
+  width: 25%;
+  height: inherit;
+  padding-left: 2vw;
+  padding-top: 3vw;
+  padding-right: 5vw;
+  border-right: 2px solid #dadada;
+  /* background-color: aliceblue; */
+}
+
+.right {
+  width: 75%;
+  height: inherit;
+  /* background-color: aqua; */
+}
