@@ -12,29 +12,50 @@
 
 <body>
   <div class="main">
+
     <div class="left">
       <form action="/create" method="post">
         <input class="form-control" type="text" placeholder="example.extension" name="filename">
       </form>
-      
+
       <hr>
 
-      <% files.forEach((file)=> { %>
-        <ul class="list-group mt-2">
-          <li class="list-group-item d-flex justify-content-between">
-            <a class="text-decoration-none" href="/">
-              <%= file %>
-            </a>
-            <a class="text-decoration-none" href="/delete/<%= file %>">
-              <span>❌</span>
-            </a>
-          </li>
-        </ul>
-        <% }); %>
+      <ul class="list-group">
+        <% if(files.length===0) { %>
+          <p class="text-center text-danger">No File Present</p>
+          <%}%>
+
+            <% files.forEach((file)=> { %>
+              <li class="list-group-item d-flex border-0 justify-content-between">
+                <a class="text-decoration-none" href="/edit/<%= file %>">
+                  <%= file %>
+                </a>
+                <a class="text-decoration-none" href="/delete/<%= file %>">
+                  <span>❌</span>
+                </a>
+              </li>
+              <% }); %>
+      </ul>
     </div>
 
-    <div class="right"></div>
+    <% if(!filedata && !filename){ %>
+      <h3 class="p-5 w-100 text-center text-danger">No Files Open</h3>
+    <%}else{%>
+        <div class="right p-5">
+          <p>
+            <%= filename %> &nbsp; <a class="text-decoration-none fw-bold" href="">X</a>
+          </p>
+          <form action="">
+            <textarea name="filedata" class="form-control" rows="25">
+              <%= filedata %>
+            </textarea>
+            <button class="mt-2 px-5 btn btn-success">Save</button>
+          </form>
+        </div>
+    <% } %>
+
   </div>
+
 </body>
 
 </html>
