@@ -43,9 +43,9 @@
     <%}else{%>
         <div class="right p-5">
           <p>
-            <%= filename %> &nbsp; <a class="text-decoration-none fw-bold" href="">X</a>
+            <%= filename %> &nbsp; <a class="text-decoration-none fw-bold" href="/">X</a>
           </p>
-          <form action="">
+          <form method="post" action="/save/<%= filename %>">
             <textarea name="filedata" class="form-control" rows="25">
               <%= filedata %>
             </textarea>

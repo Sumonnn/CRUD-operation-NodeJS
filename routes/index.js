@@ -14,8 +14,8 @@ router.get('/', function (req, res) {
 
 //create a file for a garbage forder
 router.post('/create', function (req, res) {
-  fs.writeFileSync(`public/garbage/${req.body.filename}`, "file created");
-  res.redirect('/');
+  fs.writeFileSync(`public/garbage/${req.body.filename}`, "");
+  res.redirect(`/edit/${req.body.filename}`);
 });
 
 // delete a file for a garbage forder
@@ -28,13 +28,19 @@ router.get('/delete/:filename', function (req, res) {
 router.get('/edit/:filename', (req, res) => {
   const files = fs.readdirSync('public/garbage');
   const filedata = fs.readFileSync(`public/garbage/${req.params.filename}`, 'utf-8');
-  // console.log(filedata);
   res.render('index', {
     files: files,
     filedata: filedata,
     filename: req.params.filename,
   });
 
+})
+
+
+//save filedate feature
+router.post('/save/:filename', (req, res) => {
+  fs.writeFileSync(`public/garbage/${req.params.filename}`, req.body.filedata);
+  res.redirect(`/edit/${req.params.filename}`);
 })
 
 
